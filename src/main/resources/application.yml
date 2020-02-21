@@ -1,0 +1,27 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: demo-crud-con-gradle
+  datasource:
+      url: jdbc:mariadb://localhost:3306/demo_crud
+      username: root
+      password: admin
+      driver-class-name: org.mariadb.jdbc.Driver
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+    show-sql: true    
+codes:
+  success: "200"
+  badRequest: "400"
+  dataNotFound: "404"
+  exception: "500"
+message:
+  ok: "SOLICITUD EXITOSA"
+  succes: "REGISTRO GUARDADO CON EXITO"
+  delete: "BORRADO EXITOSO"
+  update: "MODIFICACION EXITOSA"
+  error: "ERROR AL GUARDAR REGISTRO"
+  empty: "NO HAY REGISTROS EN DB..."
