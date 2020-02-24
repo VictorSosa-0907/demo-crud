@@ -14,7 +14,11 @@ import com.ejemplo.crud.democrud.controller.exceptions.DataNotFoundException;
 import com.ejemplo.crud.democrud.controller.exceptions.PersonException;
 import com.ejemplo.crud.democrud.model.Person;
 import com.ejemplo.crud.democrud.repository.PersonDAO;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ */
 @Service
 public class PersonService {
 	private Logger log = LoggerFactory.getLogger(this.getClass().getName());

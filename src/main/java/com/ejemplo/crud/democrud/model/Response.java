@@ -1,5 +1,10 @@
 package com.ejemplo.crud.democrud.model;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ * @param <T>
+ */
 public class Response<T> {
 	private String code;
 	private String detailMessage;

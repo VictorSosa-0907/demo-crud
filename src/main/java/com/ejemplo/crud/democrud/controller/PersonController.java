@@ -25,7 +25,11 @@ import com.ejemplo.crud.democrud.service.util.ConstansCode;
 import com.ejemplo.crud.democrud.service.util.ConstansMsg;
 
 import io.swagger.annotations.Api;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ */
 @Api
 @CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.POST })
 @RestController
@@ -41,7 +45,7 @@ public class PersonController {
 	private ConstansMsg constMsg;
 
 	@GetMapping(value = "/getAllPerson")
-	public ResponseEntity<Response> getAllUser() {
+	public ResponseEntity<Response> getAllPerson() {
 		log.info("METHOD: {}", "GetAllPerson");
 		Response<List<Person>> response = new Response<>();
 		response.setCode(constCode.getSuccess());

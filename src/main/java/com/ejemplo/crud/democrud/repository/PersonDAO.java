@@ -8,7 +8,11 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ejemplo.crud.democrud.model.Person;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ */
 @Repository
 public interface PersonDAO extends CrudRepository<Person, Long> {
 	@Query(value = "SELECT * FROM person WHERE status = 1", nativeQuery = true)

@@ -25,3 +25,8 @@ message:
   update: "MODIFICACION EXITOSA"
   error: "ERROR AL GUARDAR REGISTRO"
   empty: "NO HAY REGISTROS EN DB..."
+tets:
+  all: "allPerson"
+  save: "savePerson"
+  update: "updatePerson"
+  delete: "deletePerson"

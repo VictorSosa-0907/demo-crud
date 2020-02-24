@@ -2,7 +2,11 @@ package com.ejemplo.crud.democrud.service.util;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ */
 @Component
 @ConfigurationProperties(prefix = "codes")
 public class ConstansCode {

@@ -13,7 +13,11 @@ import com.ejemplo.crud.democrud.controller.exceptions.PersonException;
 import com.ejemplo.crud.democrud.model.Response;
 import com.ejemplo.crud.democrud.service.util.ConstansCode;
 import com.ejemplo.crud.democrud.service.util.ConstansMsg;
-
+/**
+ * 
+ * @author Victor.Sosa
+ *
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 	private Logger log = LoggerFactory.getLogger(this.getClass().getName());
@@ -25,7 +29,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(DataNotFoundException.class)
 	  public ResponseEntity<Response> dataEmptyException(DataNotFoundException ex) {
-		log.error("-->> {}", ex);
+		log.info("DETAIL EXCEPTION: -> {}", ex);
 	    Response response = new Response<>();
 	    response.setCode(constansCode.getDataNotFound());
 	    response.setDetailMessage(constansMsg.getEmpty());
@@ -35,7 +39,7 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(PersonException.class)
 	public ResponseEntity<Response> personException (PersonException ex){
-		log.error("-->> {}", ex);
+		log.info("DETAIL EXCEPTION: -> {}", ex);
 		Response response = new Response<>();
 		response.setCode(constansCode.getBadRequest());
 		response.setDetailMessage(constansMsg.getError());
