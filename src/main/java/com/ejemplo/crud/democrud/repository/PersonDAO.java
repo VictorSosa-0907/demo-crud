@@ -1,6 +1,7 @@
 package com.ejemplo.crud.democrud.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -19,4 +20,6 @@ public interface PersonDAO extends CrudRepository<Person, Long> {
 	  public List<Person> findPersonByStatus();
 	@Query(value = "SELECT * FROM person WHERE id_person = :id and status = 1", nativeQuery = true)
 	public Person findPersonByStatusOne(@Param("id") Long id);
+	public Person findPersonByNombre(String name);
+	
 }

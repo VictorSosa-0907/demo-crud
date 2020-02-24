@@ -1,20 +1,14 @@
 package com.ejemplo.crud.democrud.service;
 
 import static org.junit.Assert.*;
-import static org.junit.Assume.assumeTrue;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.ejemplo.crud.democrud.controller.exceptions.DataNotFoundException;
 import com.ejemplo.crud.democrud.model.Person;
 import com.ejemplo.crud.democrud.repository.PersonDAO;
 
@@ -40,6 +34,23 @@ public class PersonServiceTest {
 		} else {
 			status = true;
 		}
+		assertTrue(status);
+	}
+
+	@Test
+	public void testSavePerson() {
+		boolean status;
+		Person person = new Person();
+		person.setNombre("personaService");
+		person.setPaterno("paternoService");
+		person.setMaterno("maternoService");
+		person.setEdad(19);
+		person.setCorreo("correo.persona.service@mail.com");
+		person.setTel("1234-5678");
+		personRepository.save(person);
+
+		Person p = personRepository.findPersonByNombre(person.getNombre());
+		status = (p == null) ? false : true;
 		assertTrue(status);
 	}
 }
