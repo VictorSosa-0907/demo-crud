@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import com.ejemplo.crud.democrud.controller.exceptions.DataNotFoundException;
 import com.ejemplo.crud.democrud.controller.exceptions.PersonException;
+import com.ejemplo.crud.democrud.controller.exceptions.PersonExistException;
 import com.ejemplo.crud.democrud.model.Response;
 import com.ejemplo.crud.democrud.service.util.ConstansCode;
 import com.ejemplo.crud.democrud.service.util.ConstansMsg;
+
 /**
  * 
  * @author Victor.Sosa
@@ -28,22 +30,30 @@ public class GlobalExceptionHandler {
 	private ConstansMsg constansMsg;
 
 	@ExceptionHandler(DataNotFoundException.class)
-	  public ResponseEntity<Response> dataEmptyException(DataNotFoundException ex) {
+	public ResponseEntity<Response> dataEmptyException(DataNotFoundException ex) {
 		log.info("DETAIL EXCEPTION: -> {}", ex);
-	    Response response = new Response<>();
-	    response.setCode(constansCode.getDataNotFound());
-	    response.setDetailMessage(constansMsg.getEmpty());
-	    
-	    return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
-	  }
+		Response<Object> response = new Response<>();
+		response.setCode(constansCode.getDataNotFound());
+		response.setDetailMessage(constansMsg.getEmpty());
+
+		return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+	}
 
 	@ExceptionHandler(PersonException.class)
-	public ResponseEntity<Response> personException (PersonException ex){
+	public ResponseEntity<Response> personException(PersonException ex) {
 		log.info("DETAIL EXCEPTION: -> {}", ex);
-		Response response = new Response<>();
+		Response<Object> response = new Response<>();
 		response.setCode(constansCode.getBadRequest());
 		response.setDetailMessage(constansMsg.getError());
 		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
 	}
 
+	@ExceptionHandler(PersonExistException.class)
+	public ResponseEntity<Response> personExistException(PersonExistException ex) {
+		log.info("DETAIL EXCEPTION: -> {}", ex);
+		Response<Object> response = new Response<>();
+		response.setCode(constansCode.getBadRequest());
+		response.setDetailMessage(constansMsg.getExist());
+		return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+	}
 }

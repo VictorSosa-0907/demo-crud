@@ -38,5 +38,4 @@ public class Util {
 		}
 		return RUTE.concat(method);
 	}
-
 }

@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.Data;
+
 /**
  * 
  * @author Victor.Sosa
@@ -13,6 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "person")
+@Data
 public class Person {
 	@Id
 	@Column(name = "id_person")
@@ -32,74 +35,4 @@ public class Person {
 	private String tel;
 	@Column(name = "status", nullable = false)
 	private boolean status = true;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getPaterno() {
-		return paterno;
-	}
-
-	public void setPaterno(String paterno) {
-		this.paterno = paterno;
-	}
-
-	public String getMaterno() {
-		return materno;
-	}
-
-	public void setMaterno(String materno) {
-		this.materno = materno;
-	}
-
-	public int getEdad() {
-		return edad;
-	}
-
-	public void setEdad(int edad) {
-		this.edad = edad;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
-
-	public String getTel() {
-		return tel;
-	}
-
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
-	@Override
-	public String toString() {
-		return "Person [id=" + id + ", nombre=" + nombre + ", paterno=" + paterno + ", materno=" + materno + ", edad="
-				+ edad + ", correo=" + correo + ", tel=" + tel + ", status=" + status + "]";
-	}
 }

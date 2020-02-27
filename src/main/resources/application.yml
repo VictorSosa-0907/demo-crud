@@ -26,6 +26,7 @@ message:
   update: "MODIFICACION EXITOSA"
   error: "ERROR AL GUARDAR REGISTRO"
   empty: "NO HAY REGISTROS EN DB..."
+  exist: "LA PERSONA YA EXISTE"
 tets:
   all: "allPerson"
   save: "savePerson"

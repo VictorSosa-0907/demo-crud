@@ -25,6 +25,7 @@ import com.ejemplo.crud.democrud.service.util.ConstansCode;
 import com.ejemplo.crud.democrud.service.util.ConstansMsg;
 
 import io.swagger.annotations.Api;
+
 /**
  * 
  * @author Victor.Sosa
@@ -50,13 +51,13 @@ public class PersonController {
 		Response<List<Person>> response = new Response<>();
 		response.setCode(constCode.getSuccess());
 		response.setDetailMessage(constMsg.getOk());
-		response.setData(personService.findAllPerson());
+		response.setData(personService.getAllPerson());
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/savePerson", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/savePerson", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public ResponseEntity<Response<Person>> savePerson(@RequestBody PersonView person) {
-		log.info("METHOD: {}", "savePerson");
+		log.info("METHOD: {}", "SavePerson");
 		Response<Person> response = new Response<>();
 		response.setCode(constCode.getSuccess());
 		response.setDetailMessage(constMsg.getSucces());
@@ -64,8 +65,9 @@ public class PersonController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
-	@PostMapping(value = "/updatePerson", consumes = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping(value = "/updatePerson", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public ResponseEntity<Response<Person>> updatePerson(@RequestBody PersonView person) {
+		log.info("METHOD: {}", "UpdatePerson");
 		Response<Person> response = new Response<>();
 		response.setCode(constCode.getSuccess());
 		response.setDetailMessage(constMsg.getUpdate());
@@ -75,6 +77,7 @@ public class PersonController {
 
 	@PostMapping(value = "/deletePerson/{id}")
 	public ResponseEntity<Response> deletePerson(@PathVariable("id") Long id) {
+		log.info("METHOD: {}", "DeletePerson");
 		Response<Person> response = new Response<>();
 		response.setCode(constCode.getSuccess());
 		response.setDetailMessage(constMsg.getDelete());
