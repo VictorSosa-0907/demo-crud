@@ -14,6 +14,7 @@ import com.ejemplo.crud.democrud.controller.exceptions.DataNotFoundException;
 import com.ejemplo.crud.democrud.controller.exceptions.PersonException;
 import com.ejemplo.crud.democrud.controller.exceptions.PersonExistException;
 import com.ejemplo.crud.democrud.model.Person;
+import com.ejemplo.crud.democrud.model.pojo.ViewPerson;
 import com.ejemplo.crud.democrud.repository.PersonDAO;
 
 /**
@@ -31,6 +32,19 @@ public class PersonService {
 	/* Buscar Personas */
 	public List<Person> getAllPerson() {
 		List<Person> person = personRepository.findPersonByStatus();
+		/*
+		 * si la consulta esta vacia manda una excepcion de vacio ve a
+		 * GlobalHandlerException
+		 */
+		if (person.isEmpty()) {
+			throw new DataNotFoundException();
+		} else {
+			return person;
+		}
+	}
+	/* Buscar Personas */
+	public List<Object> getViewPerson() {
+		List<Object> person = personRepository.findViewPerson();
 		/*
 		 * si la consulta esta vacia manda una excepcion de vacio ve a
 		 * GlobalHandlerException

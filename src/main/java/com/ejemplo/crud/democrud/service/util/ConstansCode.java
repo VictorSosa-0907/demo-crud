@@ -12,7 +12,7 @@ import lombok.Data;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "codes")
+@ConfigurationProperties(prefix = "codes" )
 public class ConstansCode {
 
 	private String success;

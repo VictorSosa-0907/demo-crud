@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.ejemplo.crud.democrud.controller.exceptions.DataNotFoundException;
 import com.ejemplo.crud.democrud.controller.exceptions.PersonExistException;
 import com.ejemplo.crud.democrud.model.Person;
+import com.ejemplo.crud.democrud.model.pojo.ViewPerson;
 import com.ejemplo.crud.democrud.repository.PersonDAO;
 
 public class MockPersonDAO implements PersonDAO {
@@ -118,6 +119,12 @@ public class MockPersonDAO implements PersonDAO {
 
 	@Override
 	public Person findPersonByNombre(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Object> findViewPerson() {
 		// TODO Auto-generated method stub
 		return null;
 	}

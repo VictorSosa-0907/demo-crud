@@ -2,6 +2,8 @@ package com.ejemplo.crud.democrud.controller;
 
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ejemplo.crud.democrud.model.Person;
 import com.ejemplo.crud.democrud.model.Response;
 import com.ejemplo.crud.democrud.model.pojo.PersonView;
+import com.ejemplo.crud.democrud.model.pojo.ViewPerson;
 import com.ejemplo.crud.democrud.service.PersonService;
 import com.ejemplo.crud.democrud.service.util.ConstansCode;
 import com.ejemplo.crud.democrud.service.util.ConstansMsg;
@@ -55,6 +58,16 @@ public class PersonController {
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
+	@GetMapping(value = "/getViewPerson")
+	public ResponseEntity<Response> getViewPerson() {
+		log.info("METHOD: {}", "GetAllPerson");
+		Response<List<Object>> response = new Response<>();
+		response.setCode(constCode.getSuccess());
+		response.setDetailMessage(constMsg.getOk());
+		response.setData(personService.getViewPerson());
+		return new ResponseEntity<>(response, HttpStatus.OK);
+	}
+
 	@PostMapping(value = "/savePerson", consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
 	public ResponseEntity<Response<Person>> savePerson(@RequestBody PersonView person) {
 		log.info("METHOD: {}", "SavePerson");
@@ -84,4 +97,5 @@ public class PersonController {
 		response.setData(personService.deletePerson(id));
 		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
+
 }

@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.ejemplo.crud.democrud.model.Person;
+import com.ejemplo.crud.democrud.model.pojo.ViewPerson;
 
 /**
  * 
@@ -22,5 +23,8 @@ public interface PersonDAO extends CrudRepository<Person, Long> {
 	public Person findPersonByStatusOn(@Param("id") Long id);
 
 	public Person findPersonByNombre(String name);
+
+	@Query(value = "SELECT * FROM view_person", nativeQuery = true)
+	public List<Object> findViewPerson();
 
 }
